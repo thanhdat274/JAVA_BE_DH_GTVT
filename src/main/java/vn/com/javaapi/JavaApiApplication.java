@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JavaApiApplication {
 
 	public static void main(String[] args) {
+        System.out.println("SHOP ban hang");
         log.info("Starting note app with configuration");
         MDC.put("tracking", NanoIdUtils.randomNanoId());
 		SpringApplication.run(JavaApiApplication.class, args);
