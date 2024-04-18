@@ -1,0 +1,29 @@
+server:
+    port: 8092
+    servlet:
+        context-path: /api
+
+spring:
+    datasource:
+        hikari:
+            driver-class-name: oracle.jdbc.driver.OracleDriver
+            jdbc-url: jdbc:oracle:thin:@localhost:1521:ORCL
+            username: shop
+            password: admin123
+            connectionTimeout: 30000
+            idleTimeout: 600000
+            maxLifetime: 1800000
+            minimumIdle: 2
+            maximumPoolSize: 10
+    jpa:
+        show-sql: true
+app:
+    jwt:
+        secret: y2V7wAhnzZ1cQexXkbFkGdLuY1pK2Nuy
+logging:
+    config: file:${workdir:.}/config/logback.xml
+    level:
+        org:
+            springframework:
+                boot:
+                    autoconfigure: error
