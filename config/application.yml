@@ -22,8 +22,3 @@ app:
         secret: y2V7wAhnzZ1cQexXkbFkGdLuY1pK2Nuy
 logging:
     config: file:${workdir:.}/config/logback.xml
-    level:
-        org:
-            springframework:
-                boot:
-                    autoconfigure: error

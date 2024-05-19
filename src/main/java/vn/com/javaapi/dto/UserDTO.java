@@ -29,11 +29,10 @@ public class UserDTO {
     private String phone;
     private String address;
     private Integer roleId;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "birthday", nullable = false, updatable = false)
+
+    @Column(name = "birthday")
     private Timestamp birthday;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date", nullable = false, updatable = false)
+    @Column(name = "create_date")
     private Timestamp createdAt;
 }

@@ -13,10 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Data
 @Getter
@@ -30,7 +27,8 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "username", nullable = false)
+
+    @Column(name = "username")
     private String username;
 
     private String name;
@@ -38,15 +36,21 @@ public class Users {
     private String password;
     private String phone;
     private String address;
-    @Column(name = "role_id", nullable = false)
+
+    @Column(name = "role_id")
     private Integer roleId;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "birthday", nullable = false, updatable = false)
+
+    @Column(name = "birthday")
     private Timestamp birthday;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date", nullable = false, updatable = false)
+    @Column(name = "create_at")
     private Timestamp createdAt;
+
+    @Column(name = "update_at")
+    private Timestamp updateAt;
+
+    @Column(name = "is_enabled")
+    private Integer isEnabled;
 
 }
 
