@@ -9,7 +9,7 @@ public class ObjectUtil {
     private static final Gson gson = new GsonBuilder().serializeNulls().create();
 
     // chuyển đổi dạng to string sang dạng json
-    public static String convertToString(Object object) {
+    public static String toJson(Object object) {
         return gson.toJson(object);
     }
 }

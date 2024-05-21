@@ -24,7 +24,6 @@ import vn.com.javaapi.utils.ObjectUtil;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Optional;
 
 
@@ -33,7 +32,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private final Gson gson;
     @Value("${app.jwt.secret}")
     private String SECRET_KEY;
     private final CheckToken checkToken;
@@ -44,9 +42,9 @@ public class AuthServiceImpl implements AuthService {
 
     public AuthResponse Signup(Users user) {
         try {
-            log.info("Data signup request: {}", ObjectUtil.convertToString(user));
+            log.info("Data signup request: {}", ObjectUtil.toJson(user));
             Optional<Users> users = authRepository.findByEmail(user.getEmail());
-            log.info("User signup request: {}", ObjectUtil.convertToString(users));
+            log.info("User signup request: {}", ObjectUtil.toJson(users));
             if (users.isPresent()) {
                 log.info("User email is already registered.");
                 return AuthResponse.builder()
@@ -60,7 +58,7 @@ public class AuthServiceImpl implements AuthService {
             user.setPassword(HashUtil.hash256PassWord(user.getPassword()));
             user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
             user.setRoleId(1);
-            log.info("Data signup request: {}", ObjectUtil.convertToString(user));
+            log.info("Data signup request: {}", ObjectUtil.toJson(user));
             authRepository.save(user);
             return AuthResponse.builder()
                 .code("00")
@@ -79,7 +77,7 @@ public class AuthServiceImpl implements AuthService {
         try {
             log.info("Processing login for user: {}", user.getEmail());
             Optional<Users> optionalUser = authRepository.findByEmail(user.getEmail());
-            log.info("Data user with request login: {}", ObjectUtil.convertToString(optionalUser));
+            log.info("Data user with request login: {}", ObjectUtil.toJson(optionalUser));
             if (optionalUser.isEmpty()) {
                 log.info("User does not exist ");
                 return AuthResponse.builder()
@@ -107,7 +105,7 @@ public class AuthServiceImpl implements AuthService {
                     .signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()), SignatureAlgorithm.HS256)
                     .compact();
 
-                log.info("Token created: {} for user: {}", token, ObjectUtil.convertToString(userLogin));
+                log.info("Token created: {} for user: {}", token, ObjectUtil.toJson(userLogin));
                 return AuthResponse.builder()
                     .code("00").message("Login successful")
                     .data(new HashMap<>() {{
