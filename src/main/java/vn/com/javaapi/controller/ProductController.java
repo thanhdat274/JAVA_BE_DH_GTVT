@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vn.com.javaapi.bean.AuthResponse;
 import vn.com.javaapi.bean.ResponseData;
+import vn.com.javaapi.constant.BaseResponse;
+import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.entity.Products;
 import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.service.ProductService;
@@ -31,8 +33,14 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ResponseData> signup(@RequestBody Products products) {
-        ResponseData responseData = productService.addPro(products);
-        return new ResponseEntity<>(responseData, HttpStatus.OK);
+    public BaseResponse addProduct(@RequestBody ProductDTO products) {
+        productService.addPro(products);
+        return BaseResponse.success();
+    }
+
+    @PostMapping("/search")
+    public BaseResponse searchProduct(@RequestBody ProductDTO products) {
+        productService.addPro(products);
+        return BaseResponse.success();
     }
 }
