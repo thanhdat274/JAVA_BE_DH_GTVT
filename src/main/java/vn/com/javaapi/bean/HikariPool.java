@@ -42,6 +42,6 @@ public class HikariPool {
 
 	@Override
 	public String toString() {
-		return ObjectUtil.convertToString(this);
+		return ObjectUtil.toJson(this);
 	}
 }

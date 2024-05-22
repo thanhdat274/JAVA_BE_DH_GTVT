@@ -25,6 +25,6 @@ public class ResponseData {
 
 	@Override
 	public String toString() {
-		return ObjectUtil.convertToString(this);
+		return ObjectUtil.toJson(this);
 	}
 }

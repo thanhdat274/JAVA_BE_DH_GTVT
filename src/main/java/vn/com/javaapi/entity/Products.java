@@ -36,9 +36,9 @@ public class Products {
     private String description;
     private String battery;
     private String cpu;
-    @Column(name = "create_at")
+    @Column(name = "created_at")
     private Timestamp createdAt;
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private Timestamp updateAt;
     @Column(name = "operating_system")
     private String operatingSystem;

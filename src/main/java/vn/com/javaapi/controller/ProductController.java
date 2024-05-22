@@ -6,8 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.com.javaapi.bean.AuthResponse;
 import vn.com.javaapi.bean.ResponseData;
@@ -18,8 +20,9 @@ import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.service.ProductService;
 
 @Slf4j
-@RestController("/products")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/products")
 public class ProductController {
     private final ProductService productService;
 
@@ -32,15 +35,20 @@ public class ProductController {
         return ResponseEntity.badRequest().body(responseData);
     }
 
+
     @PostMapping("/add")
-    public BaseResponse addProduct(@RequestBody ProductDTO products) {
+    public BaseResponse addProduct(@RequestBody Products products) {
+        productService.addPro(products);
+        return BaseResponse.success();
+    }    @GetMapping("/")
+    public BaseResponse listProducts(@RequestBody Products products) {
         productService.addPro(products);
         return BaseResponse.success();
     }
 
-    @PostMapping("/search")
-    public BaseResponse searchProduct(@RequestBody ProductDTO products) {
-        productService.addPro(products);
-        return BaseResponse.success();
-    }
+    //@PostMapping("/search")
+    //public BaseResponse searchProduct(@RequestBody ProductDTO products) {
+    //    productService.addPro(products);
+    //    return BaseResponse.success();
+    //}
 }
