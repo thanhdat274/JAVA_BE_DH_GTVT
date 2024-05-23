@@ -11,7 +11,6 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-@Data
 @Builder
 @Setter
 @Getter

@@ -5,7 +5,7 @@ import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.entity.Products;
 
 public interface ProductService {
-    void addPro(Products products);
+    void addPro(ProductDTO products);
 
 
 }

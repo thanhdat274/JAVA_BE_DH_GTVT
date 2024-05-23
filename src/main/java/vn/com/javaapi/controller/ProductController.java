@@ -37,14 +37,16 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    public BaseResponse addProduct(@RequestBody Products products) {
-        productService.addPro(products);
-        return BaseResponse.success();
-    }    @GetMapping("/")
-    public BaseResponse listProducts(@RequestBody Products products) {
-        productService.addPro(products);
+    public BaseResponse addProduct(@RequestBody ProductDTO request) {
+        productService.addPro(request);
         return BaseResponse.success();
     }
+
+    //@GetMapping("/")
+    //public BaseResponse listProducts(@RequestBody ProductDTO request) {
+    //    productService.addPro(request);
+    //    return BaseResponse.success();
+    //}
 
     //@PostMapping("/search")
     //public BaseResponse searchProduct(@RequestBody ProductDTO products) {
