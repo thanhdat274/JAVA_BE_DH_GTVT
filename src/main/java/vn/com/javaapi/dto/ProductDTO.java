@@ -26,7 +26,7 @@ public class ProductDTO {
     private String battery;
     private String cpu;
     private Timestamp createdAt;
-    private Timestamp updateAt;
+    private Timestamp updatedAt;
     private String operatingSystem;
     private String ram;
     private String screenReslution;

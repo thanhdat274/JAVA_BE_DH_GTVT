@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.constant.ProductContant;
 import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.entity.Products;
@@ -12,6 +13,8 @@ import vn.com.javaapi.service.ProductMapper;
 import vn.com.javaapi.service.ProductService;
 
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -31,5 +34,40 @@ public class ProductServiceImpl implements ProductService {
         log.info("Data products mapping: {}", products);
         productRepository.save(products);
         log.info("Created product successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
+    }
+
+    public ProductsResponse listProduct() {
+        var startTime = System.currentTimeMillis();
+        log.info("Begin list product. ");
+        List<Products> listProducts = productRepository.findAll();
+        //// Get total rows
+
+        List<ProductDTO> productDTOList = productMapper.toDTOProduct(listProducts);
+        log.info("End list product with response size {} and Time handler: {} ms.", productDTOList.size(), (System.currentTimeMillis() - startTime));
+        return ProductsResponse.builder()
+            .code("00")
+            .message("List products successful").data(productDTOList)
+            .build();
+    }
+
+    public ProductsResponse getProductById(Long id) {
+        var startTime = System.currentTimeMillis();
+        log.info("Begin get product with id: {}.", id);
+        Optional<Products> optProducts = productRepository.findById(id);
+        if (optProducts.isEmpty()) {
+            log.info("User not found at DMS.");
+            ProductsResponse.builder()
+                .code("01")
+                .message("Product does not exist")
+                .build();
+        }
+        Products products = optProducts.get();
+        ProductDTO productDTO = productMapper.toDTO(products);
+
+        log.info("End get product with response: {} and Time handler: {} ms.", gson.toJson(productDTO), (System.currentTimeMillis() - startTime));
+        return ProductsResponse.builder()
+            .code("00")
+            .message("Get product successful").data(productDTO)
+            .build();
     }
 }

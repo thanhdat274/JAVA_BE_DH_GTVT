@@ -39,7 +39,7 @@ public class Products {
     @Column(name = "created_at")
     private Timestamp createdAt;
     @Column(name = "updated_at")
-    private Timestamp updateAt;
+    private Timestamp updatedAt;
     @Column(name = "operating_system")
     private String operatingSystem;
     private String ram;
