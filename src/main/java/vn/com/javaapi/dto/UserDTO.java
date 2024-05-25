@@ -21,6 +21,7 @@ import java.util.Date;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
+    private Long userId;
     private String username;
 
     private String name;

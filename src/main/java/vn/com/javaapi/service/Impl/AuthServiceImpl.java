@@ -14,6 +14,7 @@ import org.thymeleaf.TemplateEngine;
 
 import vn.com.javaapi.bean.AuthResponse;
 
+import vn.com.javaapi.constant.Constant;
 import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.repository.AuthRepository;
 import vn.com.javaapi.service.AuthService;
@@ -100,7 +101,8 @@ public class AuthServiceImpl implements AuthService {
                 log.info("key: " + SECRET_KEY);
                 // Generate the JWT token
                 String token = Jwts.builder()
-                    .setSubject(String.valueOf(userLogin.getId()))
+                    .setSubject(userLogin.getUsername())
+                    .claim(Constant.USER_ID_FIELD, userLogin.getId())
                     .setExpiration(expirationDate)
                     .signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()), SignatureAlgorithm.HS256)
                     .compact();
