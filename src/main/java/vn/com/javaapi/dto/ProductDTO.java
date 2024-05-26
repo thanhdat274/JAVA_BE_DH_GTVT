@@ -38,6 +38,6 @@ public class ProductDTO {
     private String weight;
     private BigDecimal price;
     private BigDecimal salePrice;
-    private Integer quantity;
-    private Integer productView;
+    private Long quantity;
+    private Long productView;
 }

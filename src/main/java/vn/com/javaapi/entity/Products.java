@@ -55,8 +55,8 @@ public class Products {
     private BigDecimal price;
     @Column(name = "sale_price")
     private BigDecimal salePrice;
-    private Integer quantity;
+    private Long quantity;
     @Column(name = "product_view")
-    private Integer productView;
+    private Long productView;
 
 }

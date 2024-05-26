@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,7 @@ public class ProductController {
 
     @PostMapping("/add")
     public BaseResponse addProduct(@RequestBody ProductDTO request) {
+        log.info("Product: " + request);
         productService.addPro(request);
         return BaseResponse.success();
     }
@@ -56,6 +58,12 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public BaseResponse updateProduct(@RequestBody ProductDTO request) {
+        log.info("dataa requesst: " + request);
+        productService.updatePro(request);
+        return BaseResponse.success();
+    }
 
     //@PostMapping("/search")
     //public BaseResponse searchProduct(@RequestBody ProductDTO products) {

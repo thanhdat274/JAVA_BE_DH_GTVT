@@ -18,7 +18,7 @@ import vn.com.javaapi.entity.Products;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CartsData {
     private Long id;
-    private Integer quantity;
+    private Long quantity;
     private Long userId;
     private Products products;
 }

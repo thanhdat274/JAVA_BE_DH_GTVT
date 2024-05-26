@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.constant.ProductContant;
 import vn.com.javaapi.dto.ProductDTO;
+import vn.com.javaapi.entity.Carts;
 import vn.com.javaapi.entity.Products;
 import vn.com.javaapi.repository.ProductRepository;
 import vn.com.javaapi.service.ProductMapper;
@@ -69,5 +70,22 @@ public class ProductServiceImpl implements ProductService {
             .code("00")
             .message("Get product successful").data(productDTO)
             .build();
+    }
+
+    @Override
+    public void updatePro(ProductDTO request) {
+        var startTime = System.currentTimeMillis();
+        log.info("Begin update product with request: {}.", gson.toJson(request));
+        Optional<Products> optProducts = productRepository.findById(request.getId());
+        Products products = optProducts.get();
+        products.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+        products.setPrice(request.getPrice());
+        products.setSalePrice(request.getSalePrice());
+        products.setQuantity(request.getQuantity());
+        products.setImage(request.getImage());
+        products.setThumbnail(request.getThumbnail());
+        products.setDescription(request.getDescription());
+        productRepository.save(products);
+        log.info("Update product successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
     }
 }

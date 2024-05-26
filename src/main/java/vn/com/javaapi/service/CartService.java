@@ -11,7 +11,8 @@ public interface CartService {
 
     CartResponse listCarts(Long userId);
 
-void updateCart(CartsDTO cartsDTO);
-void deleteCart(Long id);
+    void updateCart(CartsDTO cartsDTO);
+
+    void deleteCart(Long id);
 
 }
