@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -18,5 +20,5 @@ import lombok.Setter;
 public class CartResponse {
     private String code;
     private String message;
-    private CartsData data;
+    private List<CartsData> data;
 }
