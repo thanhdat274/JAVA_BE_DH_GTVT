@@ -34,9 +34,17 @@ public class CartServiceImpl implements CartService {
     public void addCart(CartsDTO request) {
         var startTime = System.currentTimeMillis();
         log.info("Begin create cart with request: {}.", gson.toJson(request));
-        Carts carts = cartsMapper.toEntityProduct(request);
-        log.info("Data carts mapping: {}", carts);
-        cartRepository.save(carts);
+        Optional<Carts> optionalCarts = cartRepository.findCartByProAndUser(request.getUserId(), request.getProductId());
+        if (optionalCarts.isPresent()) {
+            Carts existingCart = optionalCarts.get();
+            existingCart.setQuantity(existingCart.getQuantity() + request.getQuantity());
+            cartRepository.save(existingCart);
+            log.info("Updated cart entry: {}", existingCart);
+        } else {
+            Carts newCart = cartsMapper.toEntityProduct(request);
+            cartRepository.save(newCart);
+            log.info("Created new cart entry: {}", newCart);
+        }
         log.info("Created product successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
     }
 
