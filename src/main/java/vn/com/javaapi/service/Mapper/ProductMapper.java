@@ -1,4 +1,4 @@
-package vn.com.javaapi.service;
+package vn.com.javaapi.service.Mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.constant.ProductContant;
 import vn.com.javaapi.dto.ProductDTO;
-import vn.com.javaapi.entity.Carts;
 import vn.com.javaapi.entity.Products;
 import vn.com.javaapi.repository.ProductRepository;
-import vn.com.javaapi.service.ProductMapper;
+import vn.com.javaapi.service.Mapper.ProductMapper;
 import vn.com.javaapi.service.ProductService;
 
 import java.sql.Timestamp;

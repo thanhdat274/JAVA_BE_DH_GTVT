@@ -1,12 +1,10 @@
-package vn.com.javaapi.service;
+package vn.com.javaapi.service.Mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import vn.com.javaapi.dto.CartsDTO;
-import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.entity.Carts;
-import vn.com.javaapi.entity.Products;
 
 import java.util.List;
 
