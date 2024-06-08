@@ -37,6 +37,12 @@ public class Orders {
     @Column(name = "order_date")
     private Timestamp orderDate;
 
+    @Column(name = "name_order")
+    private String name;
+
+    @Column(name = "order_code")
+    private String orderCode;
+
     @Column(name = "phone_number")
     private String phone;
 

@@ -14,6 +14,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
@@ -28,7 +29,9 @@ import java.sql.Timestamp;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(generator = "USERS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "USERS_SEQ", sequenceName = "USERS_SEQ", allocationSize = 1)
     private Long id;
 
     @Column(name = "username")
@@ -50,7 +53,7 @@ public class Users {
     private Timestamp createdAt;
 
     @Column(name = "update_at")
-    private Timestamp updateAt;
+    private Timestamp updatedAt;
 
     @Column(name = "is_enabled")
     private Integer isEnabled;

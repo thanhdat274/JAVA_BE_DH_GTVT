@@ -18,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderRequest {
     private Long userId;
+    private String name;
+    private String orderCode;
     private String phone;
     private String address;
     private BigDecimal totalAmount;

@@ -20,6 +20,8 @@ public class OrderDTO {
     private Long id;
     private Long userId;
     private Timestamp orderDate;
+    private String name;
+    private String orderCode;
     private String phone;
     private String address;
     private BigDecimal totalAmount;

@@ -13,4 +13,6 @@ public interface ProductService {
     ProductsResponse getProductById(Long id);
 
     void updatePro(ProductDTO productDTO);
+
+    void updateProductQuantity(Long id,Long quantity);
 }

@@ -76,10 +76,8 @@ public class CartServiceImpl implements CartService {
             .message("Cart retrieved successfully")
             .data(cartDataList)
             .build();
-
         // Optionally log the final response
         log.info("Cart responses: {}", gson.toJson(cartResponses));
-
         return cartResponses;
     }
 

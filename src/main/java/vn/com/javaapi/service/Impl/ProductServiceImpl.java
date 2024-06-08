@@ -87,4 +87,15 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(products);
         log.info("Update product successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
     }
+
+    @Override
+    public void updateProductQuantity(Long id, Long quantity) {
+        var startTime = System.currentTimeMillis();
+        Optional<Products> optProducts = productRepository.findById(id);
+        Products products = optProducts.get();
+        Long remainingQuantity = products.getQuantity() - quantity;
+        products.setQuantity(remainingQuantity);
+        productRepository.save(products);
+        log.info("Update quantity product successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
+    }
 }
