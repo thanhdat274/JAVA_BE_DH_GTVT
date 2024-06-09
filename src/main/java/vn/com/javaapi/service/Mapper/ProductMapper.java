@@ -35,6 +35,8 @@ public interface ProductMapper {
     @Mapping(target = "quantity", source = "products.quantity")
     @Mapping(target = "productView", source = "products.productView")
     ProductDTO toDTO(Products products);
+
     List<ProductDTO> toDTOProduct(List<Products> products);
+
     Products toEntityProduct(ProductDTO productDTO);
 }

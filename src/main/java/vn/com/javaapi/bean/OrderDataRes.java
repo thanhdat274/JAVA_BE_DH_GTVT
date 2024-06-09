@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import vn.com.javaapi.entity.Products;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;

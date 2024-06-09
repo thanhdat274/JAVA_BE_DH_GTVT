@@ -18,7 +18,6 @@ import vn.com.javaapi.bean.CartResponse;
 import vn.com.javaapi.bean.ResponseData;
 import vn.com.javaapi.constant.BaseResponse;
 import vn.com.javaapi.dto.CartsDTO;
-import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.service.CartService;
 
 @Slf4j

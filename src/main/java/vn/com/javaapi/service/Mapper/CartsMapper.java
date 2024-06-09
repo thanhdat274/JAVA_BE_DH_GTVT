@@ -15,6 +15,8 @@ public interface CartsMapper {
     @Mapping(target = "userId", source = "carts.userId")
     @Mapping(target = "productId", source = "carts.productId")
     CartsDTO toDTO(Carts carts);
+
     List<CartsDTO> toDTOProduct(List<Carts> carts);
+
     Carts toEntityProduct(CartsDTO cartsDTO);
 }

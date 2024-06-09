@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.bean.UserResponse;
 import vn.com.javaapi.dto.UserDTO;
 import vn.com.javaapi.entity.Users;

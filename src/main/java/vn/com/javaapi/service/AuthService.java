@@ -8,8 +8,4 @@ public interface AuthService {
     AuthResponse Signup(UserDTO users);
 
     AuthResponse Login(Users users);
-
-    //AuthResponse ForgotPassword(Users users);
-    //
-    //AuthResponse ResetPassword(String token, Users users);
 }

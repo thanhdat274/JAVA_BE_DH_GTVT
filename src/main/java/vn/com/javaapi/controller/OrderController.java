@@ -11,15 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import vn.com.javaapi.bean.OrderRequest;
 import vn.com.javaapi.bean.OrderResponse;
-import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.bean.ResponseData;
 import vn.com.javaapi.constant.BaseResponse;
 import vn.com.javaapi.dto.OrderDTO;
-import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.service.OrderService;
 
 @Slf4j

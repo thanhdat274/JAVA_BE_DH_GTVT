@@ -3,15 +3,14 @@ package vn.com.javaapi.service.Mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.dto.UserDTO;
-import vn.com.javaapi.entity.Products;
 import vn.com.javaapi.entity.Users;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
+
     @Mapping(target = "userId", source = "users.id")
     @Mapping(target = "username", source = "users.username")
     @Mapping(target = "name", source = "users.name")

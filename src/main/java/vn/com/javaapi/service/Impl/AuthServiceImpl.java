@@ -1,6 +1,5 @@
 package vn.com.javaapi.service.Impl;
 
-import com.google.gson.Gson;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -16,7 +15,6 @@ import vn.com.javaapi.bean.AuthResponse;
 
 import vn.com.javaapi.constant.Constant;
 import vn.com.javaapi.dto.UserDTO;
-import vn.com.javaapi.entity.Products;
 import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.repository.AuthRepository;
 import vn.com.javaapi.service.AuthService;

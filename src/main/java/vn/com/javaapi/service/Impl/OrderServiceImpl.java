@@ -4,15 +4,11 @@ import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import vn.com.javaapi.bean.CartsData;
 import vn.com.javaapi.bean.OrderDataRes;
-import vn.com.javaapi.bean.OrderDetailReq;
 import vn.com.javaapi.bean.OrderRequest;
 import vn.com.javaapi.bean.OrderResponse;
-import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.constant.OrderContact.OrderStatus;
 import vn.com.javaapi.dto.OrderDTO;
-import vn.com.javaapi.dto.ProductDTO;
 import vn.com.javaapi.entity.OrderDetails;
 import vn.com.javaapi.entity.Orders;
 import vn.com.javaapi.entity.Products;
@@ -28,9 +24,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
