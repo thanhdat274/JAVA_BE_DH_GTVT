@@ -98,4 +98,17 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(products);
         log.info("Update quantity product successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
     }
+
+    @Override
+    public ProductsResponse listProductByType(String type) {
+        var startTime = System.currentTimeMillis();
+        log.info("Begin list product by type: {}.", type);
+        List<Products> listProducts = productRepository.findByType(type);
+        List<ProductDTO> productDTOList = productMapper.toDTOProduct(listProducts);
+        log.info("End list product by type with response size {} and Time handler: {} ms.", productDTOList.size(), (System.currentTimeMillis() - startTime));
+        return ProductsResponse.builder()
+            .code("00")
+            .message("List products successful").data(productDTOList)
+            .build();
+    }
 }

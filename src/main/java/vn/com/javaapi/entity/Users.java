@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -26,12 +27,9 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Users {
     @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "USERS_SEQ", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "USERS_SEQ", sequenceName = "USERS_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username")
@@ -47,7 +45,7 @@ public class Users {
     private Integer roleId;
 
     @Column(name = "birthday")
-    private Timestamp birthday;
+    private Date birthday;
 
     @Column(name = "create_at")
     private Timestamp createdAt;

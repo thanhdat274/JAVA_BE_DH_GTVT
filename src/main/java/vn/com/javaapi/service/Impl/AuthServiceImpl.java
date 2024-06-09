@@ -15,9 +15,12 @@ import org.thymeleaf.TemplateEngine;
 import vn.com.javaapi.bean.AuthResponse;
 
 import vn.com.javaapi.constant.Constant;
+import vn.com.javaapi.dto.UserDTO;
+import vn.com.javaapi.entity.Products;
 import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.repository.AuthRepository;
 import vn.com.javaapi.service.AuthService;
+import vn.com.javaapi.service.Mapper.UserMapper;
 import vn.com.javaapi.utils.CheckToken;
 import vn.com.javaapi.utils.HashUtil;
 import vn.com.javaapi.utils.ObjectUtil;
@@ -36,17 +39,16 @@ public class AuthServiceImpl implements AuthService {
     @Value("${app.jwt.secret}")
     private String SECRET_KEY;
     private final CheckToken checkToken;
-    //private final UserRepo userRepo;
-    //private final JavaMailSender mailSender;
     private final TemplateEngine templateEngine;
     private final AuthRepository authRepository;
+    private final UserMapper userMapper;
 
-    public AuthResponse Signup(Users user) {
+    public AuthResponse Signup(UserDTO user) {
         try {
             log.info("Data signup request: {}", ObjectUtil.toJson(user));
-            Optional<Users> users = authRepository.findByEmail(user.getEmail());
-            log.info("User signup request: {}", ObjectUtil.toJson(users));
-            if (users.isPresent()) {
+            Optional<Users> optusers = authRepository.findByEmail(user.getEmail());
+            log.info("User signup request: {}", ObjectUtil.toJson(optusers));
+            if (optusers.isPresent()) {
                 log.info("User email is already registered.");
                 return AuthResponse.builder()
                     .code("02")
@@ -59,8 +61,10 @@ public class AuthServiceImpl implements AuthService {
             user.setPassword(HashUtil.hash256PassWord(user.getPassword()));
             user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
             user.setRoleId(1);
+            user.setIsEnabled(1);
             log.info("Data signup request: {}", ObjectUtil.toJson(user));
-            authRepository.save(user);
+            Users users = userMapper.toEntityUsers(user);
+            authRepository.save(users);
             return AuthResponse.builder()
                 .code("00")
                 .message("Sign-up successful")

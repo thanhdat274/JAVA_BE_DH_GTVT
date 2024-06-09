@@ -166,17 +166,6 @@ public class OrderServiceImpl implements OrderService {
         log.info("Update status order successfully Time handler: {} ms.", (System.currentTimeMillis() - startTime));
     }
 
-    //@Override
-    //public OrderResponse listOrdersByUser(Long userId) {
-    //    var startTime = System.currentTimeMillis();
-    //    log.info("Begin list order by user. ");
-    //    List<Orders> listOrders = orderRepository.findAllByOrderId(userId);
-    //    List<OrderDetails> listOrdersDetails = orderDetailRepository.findAll();
-    //    Map<Long, OrderDetails> orderDetailMap = listOrdersDetails.stream()
-    //        .collect(Collectors.toMap(OrderDetails::getId, product -> product));
-    //    List<OrderDataRes> cartDataList = new ArrayList<>();
-    //    return null;
-    //}
     @Override
     public OrderResponse listOrdersByUser(Long userId) {
         var startTime = System.currentTimeMillis();
@@ -184,7 +173,7 @@ public class OrderServiceImpl implements OrderService {
 
         // Tìm kiếm danh sách đơn hàng của người dùng theo userId
         List<Orders> listOrders = orderRepository.findAllOrderByUserId(userId);
-
+        listOrders.sort((order1, order2) -> order2.getOrderDate().compareTo(order1.getOrderDate()));
         // Tạo một danh sách để lưu thông tin của từng đơn hàng
         List<OrderDataRes> orderDataList = new ArrayList<>();
 

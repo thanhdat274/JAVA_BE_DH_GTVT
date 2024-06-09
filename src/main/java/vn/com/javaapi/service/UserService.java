@@ -5,4 +5,8 @@ import vn.com.javaapi.dto.UserDTO;
 
 public interface UserService {
     UserResponse getOneUser(Long userId);
+
+    UserResponse getAllUser();
+
+    void updateUser(UserDTO user);
 }

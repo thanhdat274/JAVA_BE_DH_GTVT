@@ -13,16 +13,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vn.com.javaapi.bean.AuthResponse;
 import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.bean.ResponseData;
 import vn.com.javaapi.constant.BaseResponse;
 import vn.com.javaapi.dto.ProductDTO;
-import vn.com.javaapi.entity.Products;
-import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.service.ProductService;
 
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -63,6 +59,11 @@ public class ProductController {
         log.info("dataa requesst: " + request);
         productService.updatePro(request);
         return BaseResponse.success();
+    }
+
+    @GetMapping("/list-product-by-type/{type}")
+    public ResponseEntity<ProductsResponse> listProductsByType(@PathVariable("type") String type) {
+        return new ResponseEntity<>(productService.listProductByType(type), HttpStatus.OK);
     }
 
 }

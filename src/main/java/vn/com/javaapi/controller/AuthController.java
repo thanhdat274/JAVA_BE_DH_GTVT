@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import vn.com.javaapi.bean.AuthResponse;
 import vn.com.javaapi.bean.ResponseData;
+import vn.com.javaapi.dto.UserDTO;
 import vn.com.javaapi.entity.Users;
 import vn.com.javaapi.service.AuthService;
 
@@ -31,7 +32,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponse> signup(@RequestBody Users users) {
+    public ResponseEntity<AuthResponse> signup(@RequestBody UserDTO users) {
         AuthResponse responseData = authService.Signup(users);
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }

@@ -9,10 +9,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.com.javaapi.bean.ResponseData;
 import vn.com.javaapi.bean.UserResponse;
+import vn.com.javaapi.constant.BaseResponse;
+import vn.com.javaapi.dto.OrderDTO;
+import vn.com.javaapi.dto.UserDTO;
 import vn.com.javaapi.service.UserService;
 
 @Slf4j
@@ -31,8 +36,19 @@ public class UsersController {
         return ResponseEntity.badRequest().body(responseData);
     }
 
+    @GetMapping
+    public ResponseEntity<UserResponse> getAllUser() {
+        return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
+    }
+
     @GetMapping("/detail/{id}")
-    public ResponseEntity<UserResponse> addProduct(@PathVariable("id") Long id) {
+    public ResponseEntity<UserResponse> detailUser(@PathVariable("id") Long id) {
         return new ResponseEntity<>(userService.getOneUser(id), HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public BaseResponse updateUser(@RequestBody UserDTO request) {
+        userService.updateUser(request);
+        return BaseResponse.success();
     }
 }

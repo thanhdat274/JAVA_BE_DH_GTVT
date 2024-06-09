@@ -11,15 +11,14 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
     @JsonProperty("id")
     private Long userId;
@@ -30,7 +29,7 @@ public class UserDTO {
     private String phone;
     private String address;
     private Integer roleId;
-    private Timestamp birthday;
+    private Date birthday;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Integer isEnabled;
