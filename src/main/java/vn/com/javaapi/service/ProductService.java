@@ -4,7 +4,7 @@ import vn.com.javaapi.bean.ProductsResponse;
 import vn.com.javaapi.dto.ProductDTO;
 
 public interface ProductService {
-    void addPro(ProductDTO products);
+    void addPro(ProductDTO products) throws Exception;
 
     ProductsResponse listProduct();
 

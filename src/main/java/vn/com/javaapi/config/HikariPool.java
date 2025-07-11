@@ -1,4 +1,4 @@
-package vn.com.javaapi.bean;
+package vn.com.javaapi.config;
 
 
 import lombok.*;

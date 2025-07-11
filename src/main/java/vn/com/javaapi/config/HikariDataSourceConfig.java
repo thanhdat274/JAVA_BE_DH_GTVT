@@ -5,7 +5,6 @@ import com.zaxxer.hikari.HikariDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import vn.com.javaapi.bean.HikariPool;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

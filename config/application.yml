@@ -17,6 +17,15 @@ spring:
             maximumPoolSize: 10
     jpa:
         show-sql: true
+    minio:
+        url: http://localhost:9040/
+        access-key: admin
+        secret-key: admin1234
+        connect-timeout: 60
+        read-timeout: 10
+        write-timeout: 60
+        time-share-file: 600
+        bucket: datn-dhgtvt
 app:
     jwt:
         secret: y2V7wAhnzZ1cQexXkbFkGdLuY1pK2Nuy

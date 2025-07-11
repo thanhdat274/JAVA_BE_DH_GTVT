@@ -38,7 +38,7 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    public BaseResponse addProduct(@RequestBody ProductDTO request) {
+    public BaseResponse addProduct(@RequestBody ProductDTO request) throws Exception {
         log.info("Product: " + request);
         productService.addPro(request);
         return BaseResponse.success();

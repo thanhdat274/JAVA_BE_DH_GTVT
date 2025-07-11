@@ -2,7 +2,7 @@
 <configuration debug="true" scan="true" scanPeriod="10 seconds">
 
     <property name="log-path" value="D:/var/logs/java-api"/>
-    <property name="name-file" value="java=api"/>
+    <property name="name-file" value="java-api"/>
     <property name="time-file" value="20"/>
     <property name="size-file" value="20 MB"/>
     <property name="total-size-file" value="200 GB"/>
@@ -151,13 +151,13 @@
         <appender-ref ref="STDOUT" level="debug"/>
     </Logger>
 
-    <Logger name="org.hibernate" additivity="false" level="trace">
-        <appender-ref ref="warn-log" level="warn"/>
-        <appender-ref ref="error-log" level="error"/>
-        <appender-ref ref="debug-log" level="debug"/>
-        <appender-ref ref="info-log" level="info"/>
-        <!-- Console output -->
-        <appender-ref ref="STDOUT" level="debug"/>
-    </Logger>
+<!--    <Logger name="org.hibernate" additivity="false" level="trace">-->
+<!--        <appender-ref ref="warn-log" level="warn"/>-->
+<!--        <appender-ref ref="error-log" level="error"/>-->
+<!--        <appender-ref ref="debug-log" level="debug"/>-->
+<!--        <appender-ref ref="info-log" level="info"/>-->
+<!--        &lt;!&ndash; Console output &ndash;&gt;-->
+<!--        <appender-ref ref="STDOUT" level="debug"/>-->
+<!--    </Logger>-->
 
 </configuration>
